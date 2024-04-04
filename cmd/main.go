@@ -7,7 +7,7 @@ import (
 	"hs-login/internal/api"
 	"hs-login/internal/repository"
 	"hs-login/internal/service"
-	"hs-login/server"
+	"hs-login/pkg/server"
 	"net/http"
 )
 

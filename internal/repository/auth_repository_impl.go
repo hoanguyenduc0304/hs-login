@@ -2,7 +2,7 @@ package repository
 
 import (
 	"hs-login/internal/model"
-	"hs-login/server"
+	"hs-login/pkg/server"
 	"sync"
 )
 
