@@ -11,12 +11,12 @@ import (
 	"net/http"
 )
 
-type Api struct {
+type AuthApi struct {
 	authService service.IAuthService
 }
 
-func New(authService service.IAuthService) Api {
-	return Api{
+func NewAuthHandler(authService service.IAuthService) AuthApi {
+	return AuthApi{
 		authService: authService,
 	}
 }
@@ -31,7 +31,7 @@ func (l LoginResponse) Render(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
-func (c *Api) Login(w http.ResponseWriter, r *http.Request) {
+func (c *AuthApi) Login(w http.ResponseWriter, r *http.Request) {
 	req := model.LoginUserParam{}
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {

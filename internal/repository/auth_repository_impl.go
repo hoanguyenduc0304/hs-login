@@ -11,7 +11,7 @@ var (
 	authRepository IAuthRepository
 )
 
-func NewAuthRepository(database server.Database) IAuthRepository {
+func NewAuthRepository(database *server.Database) IAuthRepository {
 	authOnce.Do(func() {
 		authRepository = &AuthRepositoryImpl{Database: database}
 	})
@@ -19,7 +19,7 @@ func NewAuthRepository(database server.Database) IAuthRepository {
 }
 
 type AuthRepositoryImpl struct {
-	Database server.Database
+	Database *server.Database
 }
 
 func (a *AuthRepositoryImpl) CheckUsername(uname string) (*model.User, error) {
