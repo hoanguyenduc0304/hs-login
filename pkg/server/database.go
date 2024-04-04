@@ -5,7 +5,6 @@ import (
 	"fmt"
 	_ "github.com/lib/pq"
 	"hs-login/pkg/util"
-	"log"
 )
 
 type Database struct {
@@ -25,7 +24,8 @@ func InitPSQL() (*Database, error) {
 
 	config, err := util.LoadConfig(".")
 	if err != nil {
-		log.Fatal("cannot load config:", err)
+		fmt.Println("cannot load config:", err)
+		return nil, err
 	}
 	db.Db, err = sql.Open(config.DBDriver, config.DBSource)
 	fmt.Println("Connecting database")

@@ -43,15 +43,6 @@ func (c *AuthApi) Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if len(req.Username) == 0 {
-		render.Render(w, r, &LoginResponse{
-			Success:    false,
-			Message:    err.Error(),
-			StatusCode: http.StatusBadRequest,
-		})
-		return
-	}
-
 	v := validator.New()
 	err = v.Struct(req)
 	if err != nil {
